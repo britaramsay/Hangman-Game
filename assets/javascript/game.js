@@ -50,22 +50,25 @@ function newGame() {
         // Chnage to nested ifs
         // Loops through randomly chosen word to see if user's 
         // guess is in the word.
-        if(monster.includes(guess) && !guesses.includes(guess)){
-            ind.push(monster.indexOf(guess));
-            for (var j = 0; j < ind.length; j++) {
-                blanks[ind[j]] = guess;
+        if(!guesses.includes(guess)) {
+            if(monster.includes(guess)){
+                ind.push(monster.indexOf(guess));
+                for (var j = 0; j < ind.length; j++) {
+                    blanks[ind[j]] = guess;
+                }
+                // blanks[ind] = guess;
+                console.log("correct");
             }
-            // blanks[ind] = guess;
-            console.log("correct");
+            else if(lives > 1){
+                lives--;
+            }
+            else if (lives == 1){
+                lives--;
+                console.log("Game Over!");
+                ind = [];
+            }
         }
-        else if(lives > 1 && !guesses.includes(guess)){
-            lives--;
-        }
-        else if (lives == 1 && !guesses.includes(guess)){
-            lives--;
-            console.log("Game Over!");
-            ind = [];
-        }
+        
 
         // If guess is not in the guesses array, push it
         // to array
