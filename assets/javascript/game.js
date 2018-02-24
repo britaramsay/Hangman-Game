@@ -2,6 +2,8 @@ var monsters = ["banshee", "basilisk", "behemoth", "centaur",
                 "cyclops", "dryad", "elf", "ghoul", "imp", 
                 "ogre", "orc", "troll", "zombie"];
 
+var guess;
+            
 function newGame() {
     //Choose a random monster for user to guess
     var monster = monsters[Math.floor(Math.random()*monsters.length)];
@@ -14,11 +16,20 @@ function newGame() {
     } else {
         x.style.display = "none";
     };
-
+    // Logs user's letter guess, saves it in variable guess.
     document.onkeyup = function(event) {
-        var guess = event.key;
+        guess = event.key;
         console.log(guess);
-    };
 
+        // Loops through randomly chosen word to see if user's 
+        // guess is in the word.
+        for(var i = 0; i < monster.length; i++) {
+
+        if (guess == monster.charAt(i)) {
+            console.log("correct");
+        }
+    }
+    };
+    
 
 }
