@@ -5,6 +5,7 @@ var monsters = ["banshee", "basilisk", "behemoth", "centaur",
 var guess;
 var guesses = [];
 var lives;
+var blanks = [];
             
 function newGame() {
     //Choose a random monster for user to guess
@@ -12,9 +13,22 @@ function newGame() {
     console.log(monster);
     guesses.length = 0;
     lives = 6;
+    blanks = [];
+
+    for(var i = 0; i < monster.length; i++) {
+        blanks.push("_ ");
+    }
+
+    
 
     //Shows instructions when new game is started
     var x = document.getElementById("instructions");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    };
+
+    //Shows instructions when new game is started
+    var x = document.getElementById("blanks");
     if (x.style.display === "none") {
         x.style.display = "block";
     };
@@ -29,12 +43,35 @@ function newGame() {
     
     // Logs user's letter guess, saves it in variable guess.
     document.onkeyup = function(event) {
+
         // Set key to guess
         guess = event.key;
+        var ind = [];
+        // Chnage to nested ifs
+        // Loops through randomly chosen word to see if user's 
+        // guess is in the word.
+        if(monster.includes(guess) && !guesses.includes(guess)){
+            ind.push(monster.indexOf(guess));
+            for (var j = 0; j < ind.length; j++) {
+                blanks[ind[j]] = guess;
+            }
+            // blanks[ind] = guess;
+            console.log("correct");
+        }
+        else if(lives > 1 && !guesses.includes(guess)){
+            lives--;
+        }
+        else if (lives == 1 && !guesses.includes(guess)){
+            lives--;
+            console.log("Game Over!");
+            ind = [];
+        }
+
         // If guess is not in the guesses array, push it
         // to array
         if(!guesses.includes(guess))
             guesses.push(guess);
+
         // Creating a variable to hold html of user's
         // previous guesses
         var html =
@@ -43,17 +80,9 @@ function newGame() {
         // Set the inner HTML contents of the #guesses div 
         // to our html string.
         document.querySelector("#guesses").innerHTML = html;
-        // Loops through randomly chosen word to see if user's 
-        // guess is in the word.
-        for(var i = 0; i < monster.length; i++) {
 
-            if (guess == monster.charAt(i)) {
-                console.log("correct");
-                break;
-            }
-            if(i = monsters.length - 1)
-                lives--;
-        }
+        var underscores = blanks;
+        document.querySelector("#blanks").innerHTML = underscores;
     };
 
 
