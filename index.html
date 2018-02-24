@@ -6,13 +6,15 @@
     <title>Hangman Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     <script src="assets/javascript/game.js"></script>
 </head>
 <body>
-    <h1>Hangman!</h1>
+    <h1>Monsters Hangman!</h1>
 
-    <input id="newGame" type="button" value="newGame" onclick="newGame();">
+    <input id="newGame" type="button" class="btn btn-default" value="newGame" onclick="newGame();">
 
+    <p id="instructions" style="display: none;">Type a letter to guess that it is in the word.</p>
 </body>
 </html>
