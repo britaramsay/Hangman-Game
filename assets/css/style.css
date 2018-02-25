@@ -1,16 +1,44 @@
 .jumbotron {
-    background: url("../images/cat.jpg");
+    background: url("../images/abstract.jpg");
 }
 
 .jumbotron h1 {
     text-align: center;
-    color: rgba(145, 243, 218, 0.7);
+    color: rgba(125, 10, 219, 0.999);
 }
 
 .btn {
     background-color: aquamarine;
+    margin-left: 20px;
+    float: left;
 }
 
 #instructions {
     margin-top: 20px;
+    margin-left: 20px;
+    float: left;
+    clear: right;
+}
+
+#guesses {
+    clear: both;
+    margin-left: 20px;
+    /* margin-top: 40px; */
+}
+
+#blanks {
+    margin-left: 20px;
+}
+
+p {
+    size: 60px;
+
+}
+
+#game-over {
+    margin-left: 20px;    
+}
+
+#win {
+    margin-left: 20px;    
 }

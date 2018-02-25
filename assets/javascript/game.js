@@ -11,18 +11,23 @@ function newGame() {
     // Choose a random monster for user to guess
     var monster = monsters[Math.floor(Math.random()*monsters.length)];
     console.log(monster);
+
     // Clear guesses array when new game starts
-    guesses.length = 0;
+    guesses = [];
     lives = 6;
     // Clear array for blanks
     blanks = [];
+
     // Create array of underscores the length of word
     for(var i = 0; i < monster.length; i++) {
         blanks.push("_ ");
     }
 
-    // function to show elements on new game
-    // need to hide when game is over
+    // Hide win or lose message if user starts a new game
+    hideElement("win");
+    hideElement("game-over");
+
+    // Function to show elements on new game
     showElement("instructions");
     showElement("blanks");
     showElement("guesses");
@@ -69,7 +74,13 @@ function newGame() {
             else if (lives == 1){
                 lives--;
                 showElement("game-over");
+                hideElement("blanks");
+                hideElement("guesses");
+                hideElement("lives");
+
+                guesses = [];
                 ind = [];
+                blanks = [];
             }
             // Check if user won and show div
             if (didUserWin(blanks, monster)) {
@@ -93,6 +104,7 @@ function newGame() {
 
         document.querySelector("#blanks").innerHTML = blanks;
     };
+
     // Show an html element
     function showElement (id) {
         var x = document.getElementById(id);
@@ -100,6 +112,15 @@ function newGame() {
             x.style.display = "block";
         };
     };
+
+    // Hide an html element
+    function hideElement (id) {
+        var x = document.getElementById(id);
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        };
+    };
+
     // check if user has guessed all letters
     function didUserWin (blanks, monster) {
         for (var i = 0; i < monster.length; i++) {
@@ -107,6 +128,18 @@ function newGame() {
                 return false;
             }
         }
+        
+        // clear arrays
+        guesses = [];
+        ind = [];
+        blanks = [];
+
+        // if user won
+        // hide elements
+        hideElement("blanks");
+        hideElement("guesses");
+        hideElement("lives");
+
         return true;
     }
 

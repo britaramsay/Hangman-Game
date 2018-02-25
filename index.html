@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hangman Game</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-    <script src="assets/javascript/game.js"></script>
-</head>
-<body>
-    <div class="jumbotron">
-        <h1>Monsters Hangman!</h1>
-    </div>    
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Hangman Game</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+        <script src="assets/javascript/game.js"></script>
+    </head>
+    <body>
+        <div class="jumbotron">
+            <h1>Monsters Hangman!</h1>
+        </div>    
+        <div class="container">
+            <div class="row">
+                <input id="newGame" type="button" class="btn btn-default" value="New Game" onclick="newGame();">
 
-    <input id="newGame" type="button" class="btn btn-default" value="New Game" onclick="newGame();">
-
-    <p id="instructions" style="display: none;">Type a letter to guess that it is in the word.</p>
-
-    <p id="guesses" style="display: none;"></p>
-
-    <p id="lives" style="display: none;"></p>
-
-    <p id="blanks" style="display: none;"></p>
-
-    <p id="win" style="display: none">YOU WON!</p>
-
-    <p id="game-over" style="display: none">GAME OVER</p>
-
-
-</body>
+                <span id="instructions" style="display: none;">Type a letter to guess that it is in the word.</span>
+            </div>
+            <div class="row">
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <p id="guesses" style="display: none;"></p>
+        
+                    <p id="lives" style="display: none;"></p>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <p id="blanks" style="display: none;"></p>
+                </div>
+            </div>
+            <div class="row">
+                <p id="win" style="display: none">YOU WON!</p>
+        
+                <p id="game-over" style="display: none">GAME OVER</p>
+            </div> 
+        </div>
+    </body>
 </html>
