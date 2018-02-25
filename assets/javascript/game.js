@@ -41,7 +41,7 @@ function newGame() {
         // guess is in the word.
 
         // if they have not already guessed that letter
-        if(!guesses.includes(guess)) {
+        if(!guesses.includes(guess) && !didUserWin(blanks, monster) && lives !== 0) {
             // if guess is in word
             if(monster.includes(guess)){
                 // loop through length of monster word
@@ -71,15 +71,15 @@ function newGame() {
                 showElement("game-over");
                 ind = [];
             }
-            // check is user won
-            if(didUserWin(blanks, monster)) {
+            // Check if user won and show div
+            if (didUserWin(blanks, monster)) {
                 showElement("win");
             }
         }
         
         // If guess is not in the guesses array, push it
         // to array
-        if(!guesses.includes(guess))
+        if(!guesses.includes(guess) && !didUserWin(blanks, monster) && lives !== 0)
             guesses.push(guess);
 
         // Creating a variable to hold html of user's
@@ -91,17 +91,16 @@ function newGame() {
         // to our html string.
         document.querySelector("#guesses").innerHTML = html;
 
-        var underscores = blanks;
-        document.querySelector("#blanks").innerHTML = underscores;
+        document.querySelector("#blanks").innerHTML = blanks;
     };
-    
+    // Show an html element
     function showElement (id) {
         var x = document.getElementById(id);
         if (x.style.display === "none") {
             x.style.display = "block";
         };
     };
-
+    // check if user has guessed all letters
     function didUserWin (blanks, monster) {
         for (var i = 0; i < monster.length; i++) {
             if (blanks[i] !== monster.charAt(i)) {
