@@ -49,8 +49,13 @@ function newGame() {
 
     // Logs user's letter guess, saves it in variable guess.
     document.onkeyup = function(event) {
-        // Set key to guess
-        guess = event.key;
+        if((event.key.charCodeAt(0)>96 && event.key.charCodeAt(0)<123)){      
+            // Set key to guess
+            guess = event.key;
+        }
+        else {      
+            alert("Please only guess lowercase characters.");
+        }
         // if they have not already guessed that letter
         if(!guesses.includes(guess) && !didUserWin(blankWord, monster) && lives !== 0) {
             // If guess is not in the guesses array, push it
@@ -66,7 +71,6 @@ function newGame() {
                         blankWord = blankWord.substr(0, 2*i) + guess + " " + blankWord.substr(2*i + 2, blankWord.length - 1);
                     }
                 }
-                console.log("correct");
             }
             // lose a life if guess is not in word
             else if(lives > 1)

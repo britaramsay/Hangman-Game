@@ -23,6 +23,7 @@
     clear: both;
     margin-left: 20px;
     margin-top: 70px;
+    size: 50px;
 }
 
 #blanks {
@@ -35,11 +36,6 @@
 
 #win {
     margin-left: 20px;    
-}
-
-p {
-    size: 60px;
-
 }
 
 #showHint {
