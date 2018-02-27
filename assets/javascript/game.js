@@ -34,16 +34,8 @@ function newGame() {
 
     // Logs user's letter guess, saves it in variable guess.
     document.onkeyup = function(event) {
-
         // Set key to guess
         guess = event.key;
-
-        // array to hold indexes of guessed letter if it is 
-        // in the word.
-        var ind = [];
-
-        // Loops through randomly chosen word to see if user's 
-        // guess is in the word.
 
         // if they have not already guessed that letter
         if(!guesses.includes(guess) && !didUserWin(blankWord, monster) && lives !== 0) {
@@ -53,18 +45,10 @@ function newGame() {
                 for(var i = 0; i < monster.length; i++) {
                     // if guess is at position i
                     if(guess === monster.charAt(i)) {
-                        // push i to indexes array
-                        ind.push(i);
-                        
-                        blankWord = blankWord.substr(0, 2*i) + guess + " " + blankWord.substr(2*i  +2, blankWord.length - 1);
-            
-                        // console.log(blankWord);
-
+                        // concatenate correct guess with blankWord substrings
+                        blankWord = blankWord.substr(0, 2*i) + guess + " " + blankWord.substr(2*i + 2, blankWord.length - 1);
                     }
                 }
-                
-                // clear index array? is this needed?
-                ind = [];
                 console.log("correct");
             }
             // lose a life if guess is not in word
@@ -80,7 +64,6 @@ function newGame() {
                 hideElement("lives");
 
                 guesses = [];
-                ind = [];
                 blankWord = "";
             }
             // Check if user won and show div
@@ -102,7 +85,6 @@ function newGame() {
         // Set the inner HTML contents of the #guesses div 
         // to our html string.
         document.querySelector("#guesses").innerHTML = html;
-
         document.querySelector("#blankWord").innerHTML = blankWord;
     };
 
@@ -130,13 +112,10 @@ function newGame() {
                 return false;
             }
         }
-        
+        // if user won
         // clear arrays
         guesses = [];
-        ind = [];
         blankWord = "";
-
-        // if user won
         // hide elements
         hideElement("blankWord");
         hideElement("guesses");
@@ -144,8 +123,4 @@ function newGame() {
 
         return true;
     }
-
-
-    
-
 }
