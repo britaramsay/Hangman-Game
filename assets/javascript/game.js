@@ -5,7 +5,8 @@ var monsters = ["banshee", "basilisk", "behemoth", "centaur",
 var guess;
 var guesses = [];
 var lives;
-var blanks = [];
+var blankWord = "";
+
             
 function newGame() {
     // Choose a random monster for user to guess
@@ -16,20 +17,19 @@ function newGame() {
     guesses = [];
     lives = 6;
     // Clear array for blanks
-    blanks = [];
 
     // Create array of underscores the length of word
     for(var i = 0; i < monster.length; i++) {
-        blanks.push("_ ");
+        blankWord += "_ ";
     }
-
+    console.log(blankWord);
     // Hide win or lose message if user starts a new game
     hideElement("win");
     hideElement("game-over");
 
     // Function to show elements on new game
     showElement("instructions");
-    showElement("blanks");
+    showElement("blankWord");
     showElement("guesses");
 
     // Logs user's letter guess, saves it in variable guess.
@@ -46,7 +46,7 @@ function newGame() {
         // guess is in the word.
 
         // if they have not already guessed that letter
-        if(!guesses.includes(guess) && !didUserWin(blanks, monster) && lives !== 0) {
+        if(!guesses.includes(guess) && !didUserWin(blankWord, monster) && lives !== 0) {
             // if guess is in word
             if(monster.includes(guess)){
                 // loop through length of monster word
@@ -55,13 +55,14 @@ function newGame() {
                     if(guess === monster.charAt(i)) {
                         // push i to indexes array
                         ind.push(i);
+                        
+                        blankWord = blankWord.substr(0, 2*i) + guess + " " + blankWord.substr(2*i  +2, blankWord.length - 1);
+            
+                        // console.log(blankWord);
+
                     }
                 }
-                // loop through for length of saved indexes
-                for (var j = 0; j < ind.length; j++) {
-                    // replace the blanks with the letter 
-                    blanks[ind[j]] = guess;
-                }
+                
                 // clear index array? is this needed?
                 ind = [];
                 console.log("correct");
@@ -74,23 +75,23 @@ function newGame() {
             else if (lives == 1){
                 lives--;
                 showElement("game-over");
-                hideElement("blanks");
+                hideElement("blankWord");
                 hideElement("guesses");
                 hideElement("lives");
 
                 guesses = [];
                 ind = [];
-                blanks = [];
+                blankWord = "";
             }
             // Check if user won and show div
-            if (didUserWin(blanks, monster)) {
+            if (didUserWin(blankWord, monster)) {
                 showElement("win");
             }
         }
         
         // If guess is not in the guesses array, push it
         // to array
-        if(!guesses.includes(guess) && !didUserWin(blanks, monster) && lives !== 0)
+        if(!guesses.includes(guess) && !didUserWin(blankWord, monster) && lives !== 0)
             guesses.push(guess);
 
         // Creating a variable to hold html of user's
@@ -102,7 +103,7 @@ function newGame() {
         // to our html string.
         document.querySelector("#guesses").innerHTML = html;
 
-        document.querySelector("#blanks").innerHTML = blanks;
+        document.querySelector("#blankWord").innerHTML = blankWord;
     };
 
     // Show an html element
@@ -122,9 +123,10 @@ function newGame() {
     };
 
     // check if user has guessed all letters
-    function didUserWin (blanks, monster) {
+    function didUserWin (blannks, monster) {
+
         for (var i = 0; i < monster.length; i++) {
-            if (blanks[i] !== monster.charAt(i)) {
+            if (blankWord.charAt(2*i) !== monster.charAt(i)) {
                 return false;
             }
         }
@@ -132,11 +134,11 @@ function newGame() {
         // clear arrays
         guesses = [];
         ind = [];
-        blanks = [];
+        blankWord = "";
 
         // if user won
         // hide elements
-        hideElement("blanks");
+        hideElement("blankWord");
         hideElement("guesses");
         hideElement("lives");
 
