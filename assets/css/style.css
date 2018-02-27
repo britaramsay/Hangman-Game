@@ -8,8 +8,7 @@
 }
 
 .btn {
-    background-color: aquamarine;
-    margin-left: 20px;
+    /* background-color: aquamarine; */
     float: left;
 }
 
@@ -17,13 +16,13 @@
     margin-top: 20px;
     margin-left: 20px;
     float: left;
-    clear: right;
+    clear: both;
 }
 
 #guesses {
     clear: both;
     margin-left: 20px;
-    /* margin-top: 40px; */
+    margin-top: 70px;
 }
 
 #blanks {
@@ -41,4 +40,13 @@
 p {
     size: 60px;
 
+}
+
+#showHint {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#hint {
+    clear: both;
 }
