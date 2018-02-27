@@ -12,7 +12,7 @@
     </head>
     <body>
         <div class="jumbotron">
-            <h1>Monsters Hangman!</h1>
+            <h1>Mythical Creatures Hangman!</h1>
         </div>    
         <div class="container">
             <div class="row">
@@ -22,25 +22,32 @@
             </div>
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <p id="guesses"></p>
-        
-                    <p id="lives"></p>
+                    <div class="panel panel-default" id="gamePanel" style="display: none;">
+                        <div class="panel-heading">
+                            <p id="guesses"></p>
+    
+                            <p id="lives"></p>
+                        </div>
+                        <div class="panel-body">
+                            <canvas id="myCanvas" width="300" height="300" style="border:1px solid #d3d3d3;">
+                                Your browser does not support the HTML5 canvas tag.
+                            </canvas>
+                        </div>
+                    </div>
+                  
+                   
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                     <p id="blankWord"></p>
                     <input id="showHint" style="display: none;" type="button" class="btn btn-info" value="Get Hint" onclick="showHint();">
 
                     <p id="hint" style="display: none">Hint</p>
+
+                    <p id="win" style="display: none">YOU WON!</p>
+        
+                    <p id="game-over" style="display: none">GAME OVER</p>
                 </div>
             </div>
-            <div class="row">
-                <p id="win" style="display: none">YOU WON!</p>
-        
-                <p id="game-over" style="display: none">GAME OVER</p>
-            </div> 
-            <canvas id="myCanvas" width="300" height="300" style="border:1px solid #d3d3d3;">
-                Your browser does not support the HTML5 canvas tag.
-            </canvas>
         </div>
     </body>
 </html>

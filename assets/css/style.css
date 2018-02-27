@@ -1,48 +1,74 @@
+body {
+    margin: 0;
+}
+
 .jumbotron {
     background: url("../images/abstract.jpg");
 }
 
 .jumbotron h1 {
     text-align: center;
-    color: rgba(125, 10, 219, 0.999);
+    font-size: 55px;
+    color: rgba(252, 248, 15, 0.999);
+    text-shadow: 2px 2px 8px #FF0000;
 }
 
 .btn {
     /* background-color: aquamarine; */
     float: left;
+    font-size: 25px;
+}
+
+p {
+    font-size: 17px;
 }
 
 #instructions {
     margin-top: 20px;
     margin-left: 20px;
+    font-size: 23px;
     float: left;
     clear: both;
+}
+
+#gamePanel {
+    margin-top: 40px;
 }
 
 #guesses {
     clear: both;
     margin-left: 20px;
-    margin-top: 70px;
-    size: 50px;
+    /* margin-top: 70px; */
 }
 
-#blanks {
-    margin-left: 20px;
+#blankWord {
+    margin-left: 40px;
+    font-size: 40px;
 }
 
 #game-over {
-    margin-left: 20px;    
+    margin-left: 20px;   
+    margin-top: 40px; 
 }
 
 #win {
-    margin-left: 20px;    
+    margin-left: 20px;   
+    margin-top: 40px;  
 }
 
 #showHint {
     margin-top: 20px;
     margin-bottom: 20px;
+    margin-left: 40px;
 }
 
 #hint {
     clear: both;
+    margin-left: 40px;
+}
+
+#myCanvas {
+    margin-top: 40px;
+    display: block;
+    border: 0px;
 }

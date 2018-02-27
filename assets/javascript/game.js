@@ -36,6 +36,7 @@ function newGame() {
     
 
     showElement("showHint");
+    showElement("gamePanel");
 
     // Function to show elements on new game
     showElement("instructions");
@@ -54,7 +55,7 @@ function newGame() {
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
     // Clear canvas from previous game
-    ctx.clearRect(0, 0, 300, 300);
+    ctx.clearRect(0, 0, 200, 300);
     ctx.beginPath();
     // Draw gallows
     ctx.moveTo(50,50);
