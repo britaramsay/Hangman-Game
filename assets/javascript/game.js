@@ -14,8 +14,10 @@ var monsters = [{name: "banshee", hint: "a female spirit whose wailing warns of 
 
 var guess;
 var guesses = [];
-var lives = 6;
+var lives = 7;
 var blankWord = "";
+
+
    
 function newGame() {
     // Choose a random monster for user to guess
@@ -23,7 +25,9 @@ function newGame() {
     var monster = monsters[inx].name;
     var monsterHint = monsters[inx].hint;
 
-    resetData();
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    resetData(c, ctx);
 
     // Create string of underscores the length of word
     for(var i = 0; i < monster.length; i++) {
@@ -46,9 +50,31 @@ function newGame() {
     document.querySelector("#guesses").innerHTML = html;
     document.querySelector("#blankWord").innerHTML = blankWord;
     document.querySelector("#hint").innerHTML = monsterHint;
+    // Canvas variables
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    // Clear canvas from previous game
+    ctx.clearRect(0, 0, 300, 300);
+    ctx.beginPath();
+    // Draw gallows
+    ctx.moveTo(50,50);
+    ctx.lineTo(50,250);
+    ctx.stroke();
+    ctx.moveTo(20,250);
+    ctx.lineTo(80,250);
+    ctx.stroke();
+    ctx.moveTo(50,50);
+    ctx.lineTo(130,50);
+    ctx.stroke();
+    ctx.moveTo(130,50);
+    ctx.lineTo(130,80);
+    ctx.stroke();
 
     // Logs user's letter guess, saves it in variable guess.
     document.onkeyup = function(event) {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+
         if((event.key.charCodeAt(0)>96 && event.key.charCodeAt(0)<123)){      
             // Set key to guess
             guess = event.key;
@@ -73,11 +99,65 @@ function newGame() {
                 }
             }
             // lose a life if guess is not in word
-            else if(lives > 1)
+            else if(lives > 1) {
                 lives--;
+                if (lives == 6) {
+                    // Draw head
+                    ctx.beginPath();
+                    ctx.arc(130,100,20,0,2*Math.PI);
+                    ctx.stroke();
+                }
+                if (lives == 5) {
+                    // Draw body
+                    ctx.moveTo(130,120);
+                    ctx.lineTo(130,180);
+                    ctx.stroke();
+                }
+                if (lives == 4) {
+                    // Draw left leg
+                    ctx.moveTo(130,180);
+                    ctx.lineTo(110,200);
+                    ctx.stroke();
+                }
+                if (lives == 3) {
+                    // Draw right leg
+                    ctx.moveTo(130,180);
+                    ctx.lineTo(150,200);
+                    ctx.stroke();
+                }
+                if (lives == 2) {
+                    // Draw left arm
+                    ctx.moveTo(130,150);
+                    ctx.lineTo(105,140);
+                    ctx.stroke();
+                }
+                if (lives == 1) {
+                    // Draw right arm
+                    ctx.moveTo(130,150);
+                    ctx.lineTo(155,140);
+                    ctx.stroke();
+                }
+            }
             // game is over if they were on their last life
             else if (lives == 1){
                 lives--;
+                // Draw face
+                ctx.moveTo(128,100);
+                ctx.lineTo(118,90);
+         
+                ctx.moveTo(118,100);
+                ctx.lineTo(128,90);
+             
+                ctx.moveTo(142,100);
+                ctx.lineTo(132,90);
+             
+                ctx.moveTo(142,90);
+                ctx.lineTo(132,100);
+              
+                ctx.moveTo(125,110);
+                ctx.lineTo(135,110);
+                ctx.stroke();
+
                 showElement("game-over");
             }
             // Check if user won and show div
@@ -127,13 +207,14 @@ function showHint(){
     showElement("hint");
 };
 
-function resetData() {
+function resetData(canvas, contezt) {
     guesses = [];
     blankWord = "";
-    lives = 6;
+    lives = 7;
     // Hide win or lose message if user starts a new game
     hideElement("win");
     hideElement("game-over");
     hideElement("hint");
+
 };
 
