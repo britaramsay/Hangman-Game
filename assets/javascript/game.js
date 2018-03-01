@@ -15,10 +15,10 @@ var monsters = [{name: "banshee", hint: "a female spirit whose wailing warns of 
                 {name: "zombie", hint: "a corpse said to be revived by witchcraft, especially in certain African and Caribbean religions."}];
 
 // Initial variables
-var guess;
-var guesses = [];
-var lives = 7;
-var blankWord = "";
+var guess,
+    guesses = [],
+    lives = 7,
+    blankWord = "";
 
 // Check box for auto replay
 function checkBox() {
@@ -39,7 +39,7 @@ function onMobile(x) {
 }
 
 const x = window.matchMedia("(max-width: 768px)");
-    x.addListener(onMobile);
+x.addListener(onMobile);
 
 if(matchMedia) {
     const x = window.matchMedia("(max-width: 768px)");
@@ -236,17 +236,19 @@ function newGame() {
             }
         }
 
-        // Creating a variable to hold html of user's previous guesses
+        // Variable to hold html of user's previous guesses
         var html =
         "<p>You have guessed: " + guesses + "</p>" + 
         "<p>Lives: " + lives;
         // Set the inner HTML contents of the #guesses div 
         document.querySelector("#guesses").innerHTML = html;
         document.querySelector("#blankWord").innerHTML = blankWord;
+
     }; // End checkLetter()
     
     // variable for setGuess function
     newGame.setGuess = setGuess;
+
 } // End newGame()
 
 // check if user has guessed all letters
@@ -262,6 +264,7 @@ function didUserWin (monster) {
 // Show an html element
 function showElement (id) {
     var x = document.getElementById(id);
+
     if (x.style.display === "none") {
         x.style.display = "block";
     };
@@ -270,6 +273,7 @@ function showElement (id) {
 // Hide an html element
 function hideElement (id) {
     var x = document.getElementById(id);
+
     if (x.style.display === "block") {
         x.style.display = "none";
     };
