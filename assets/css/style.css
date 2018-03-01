@@ -12,15 +12,6 @@ body {
     background: url("../images/abstract.jpg");
 }
 
-.col-6 {
-    background: url("../images/dark-triangles.png");
-
-}
-
-#auto {
-    margin-left: 20px;
-}
-
 .jumbotron h1 {
     text-align: center;
     font-size: 55px;
@@ -34,8 +25,14 @@ body {
     box-shadow: 2px 2px 2px #aaaaaa;
 }
 
-p {
-    font-size: 17px;
+#auto {
+    margin-left: 20px;
+}
+
+#letters {
+    margin-right: 20px;
+    font-size: 5px;
+    float: left;
 }
 
 #instructions {
@@ -44,6 +41,10 @@ p {
     font-size: 23px;
     float: left;
     clear: both;
+}
+
+p {
+    font-size: 17px;
 }
 
 #gamePanel {
@@ -61,16 +62,6 @@ p {
     font-size: 40px;
 }
 
-#game-over {
-    margin-left: 20px;   
-    margin-top: 40px; 
-}
-
-#win {
-    margin-left: 20px;   
-    margin-top: 40px;  
-}
-
 #showHint {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -86,8 +77,12 @@ canvas {
     border: 0px !important;
 }
 
-#letters {
-    margin-right: 20px;
-    font-size: 5px;
-    float: left;
+#game-over {
+    margin-left: 20px;   
+    margin-top: 40px; 
+}
+
+#win {
+    margin-left: 20px;   
+    margin-top: 40px;  
 }

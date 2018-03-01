@@ -58,13 +58,14 @@ function showLetters () {
 }
 
 function newGame() {
+    $("#mobile").empty();
 
     // Create letter buttons
     for (var i = 97; i < 123; i++) {
         var letterBtn = String.fromCharCode(i);
         var newDiv = $("<div>");
         newDiv.html("<input type='button' id='"+ letterBtn +"' class='btn btn-success' value='"+ letterBtn +"' onclick='newGame.setGuess(value);' style='margin-left:5px;margin-right:5px;margin-bottom:5px;'>");
-        
+
         $("#mobile").append(newDiv);
     }
 
@@ -128,6 +129,10 @@ function newGame() {
         if((event.key.charCodeAt(0)>96 && event.key.charCodeAt(0)<123)){      
             // Set key to guess
             guess = event.key;
+            // disable button
+            var x = document.getElementById(guess);
+            x.style.color = "black";
+            x.disabled = true;
         }
         else {      
             alert("Please only guess lowercase characters.");
@@ -138,6 +143,11 @@ function newGame() {
     // Set guess when user click letter buttons
     function setGuess(value) {
         guess = value;
+        // disable button
+        var x = document.getElementById(guess);
+        x.style.color = "black";
+        x.disabled = true;
+
         checkLetter();
     }
 
@@ -288,4 +298,5 @@ function resetData() {
     hideElement("win");
     hideElement("game-over");
     hideElement("hint");
+
 };
