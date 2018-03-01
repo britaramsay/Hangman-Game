@@ -19,16 +19,21 @@
         </div>    
         <div class="container">
             <div class="row">
-                <div id="newGame">
-                    <input type="button" class="btn btn-success" value="New Game" onclick="newGame();">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div id="newGame">
+                        <label><input type="button" class="btn btn-success" value="New Game" onclick="newGame();"></label>
+                    </div>
                 </div>
-                <div class="checkbox">
-                    <label id="auto"><input type="checkbox" value="" onclick="checkBox();" id="box">Auto start new game</label>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <div class="checkbox">
+                        <label id="auto"><input type="checkbox" value="" onclick="checkBox();" id="box">Auto start new game</label>
+                    </div>
                 </div>
-                <div class="checkbox">
-                    <label id="letters"><input type="checkbox" onclick="showLetters();">Click letters to guess on the screen</label>
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <div class="checkbox">
+                        <label id="letters" style="display: none;"><p value="Toggle On Screen Keyboard" onclick="showLetters();">Toggle on screen keyboard</p></label>
+                    </div>
                 </div>
-
                 <span id="instructions" style="display: none;"><blockquote>Type a letter to guess that it is in the word.</blockquote></span>
             </div>
             <div class="row">
@@ -60,7 +65,7 @@
                 </div>
             </div>
             <div class="row">
-                <div id="mobile"  style="display: none">
+                <div id="mobile" style="display: none">
             
                 </div>
             </div>

@@ -26,6 +26,26 @@ function checkBox() {
     if (auto.checked == true)
         newGame();
 }
+
+function onMobile(x) {
+    if (x.matches) {
+        // document.mobile.style.display = "block";
+       showElement("mobile"); 
+    }
+    else {
+        hideElement("mobile");
+    }
+}
+
+const x = window.matchMedia("(max-width: 768px)");
+    x.addListener(onMobile);
+
+if(matchMedia) {
+    const x = window.matchMedia("(max-width: 768px)");
+    x.addListener(onMobile);
+    onMobile(x);
+}
+
 // Checkbox for show/hide on screen letters
 function showLetters () {
     var mobile = document.getElementById("mobile");
@@ -67,6 +87,7 @@ function newGame() {
     showElement("showHint");
     showElement("gamePanel");
     showElement("instructions");
+    showElement("letters");
 
     // Creating a variable to hold html of user's
     // previous guesses
