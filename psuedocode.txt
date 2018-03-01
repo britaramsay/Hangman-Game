@@ -1,0 +1,14 @@
+array of words for hangman game
+randomly select one, call function, new game button
+
+get users key event
+
+
+loop through word
+    if key equals a letter in word
+        add key to guessed letters array
+        show letter in word
+    if key is not in word
+        lives--
+        add key to guessed letters array
+    

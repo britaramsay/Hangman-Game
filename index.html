@@ -3,22 +3,30 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Hangman Game</title>
+        <title style="display: none">Hangman Game</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
         <script src="assets/javascript/game.js"></script>
+
     </head>
     <body>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
         <div class="jumbotron">
             <h1>Mythical Creatures Hangman!</h1>
         </div>    
         <div class="container">
             <div class="row">
-                <input id="newGame" type="button" class="btn btn-success" value="New Game" onclick="newGame();">
+                <div id="newGame">
+                    <input type="button" class="btn btn-success" value="New Game" onclick="newGame();">
+                </div>
                 <div class="checkbox">
-                    <label id="auto"><input type="checkbox" value="" onclick="checkBox()"" id="box">Auto start new game</label>
+                    <label id="auto"><input type="checkbox" value="" onclick="checkBox();" id="box">Auto start new game</label>
+                </div>
+                <div class="checkbox">
+                    <label id="letters"><input type="checkbox" onclick="showLetters();">Click letters to guess on the screen</label>
                 </div>
 
                 <span id="instructions" style="display: none;"><blockquote>Type a letter to guess that it is in the word.</blockquote></span>
@@ -49,6 +57,11 @@
                     <p id="win" style="display: none"><img src="assets/images/win.png"></p>
         
                     <p id="game-over" style="display: none"><img src="assets/images/lose.png"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div id="mobile"  style="display: none">
+            
                 </div>
             </div>
         </div>
