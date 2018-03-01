@@ -20,8 +20,6 @@ var guesses = [];
 var lives = 7;
 var blankWord = "";
 
-// for mobile, jquery to make div buttons of all letters
-
 // Check box for auto replay
 function checkBox() {
     var auto = document.getElementById("box");
@@ -29,6 +27,7 @@ function checkBox() {
         newGame();
 }
 
+// Media queries to show letters buttons on mobile devices
 function onMobile(x) {
     if (x.matches) {
         // document.mobile.style.display = "block";
@@ -48,7 +47,7 @@ if(matchMedia) {
     onMobile(x);
 }
 
-// Checkbox for show/hide on screen letters
+// Toggle show/hide on screen letters
 function showLetters () {
     var mobile = document.getElementById("mobile");
     if (mobile.style.display === "none") {
@@ -73,12 +72,14 @@ function newGame() {
     var inx = Math.floor(Math.random()*monsters.length);
     var monster = monsters[inx].name;
     var monsterHint = monsters[inx].hint;
+
     // Var for if autoplay is checked
     var auto = document.getElementById("box");
 
+    // Canvas varibles in function
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
-    resetData(c, ctx);
+    resetData();
 
     // Create string of underscores the length of word
     for(var i = 0; i < monster.length; i++) {
@@ -97,7 +98,6 @@ function newGame() {
     "<p>You have guessed: " + guesses + "</p>" + 
     "<p>Lives: " + lives;
     // Set the inner HTML contents of the #guesses div 
-    // to our html string.
     document.querySelector("#guesses").innerHTML = html;
     document.querySelector("#blankWord").innerHTML = blankWord;
     document.querySelector("#hint").innerHTML = monsterHint;
@@ -148,7 +148,7 @@ function newGame() {
         var ctx = c.getContext("2d");
 
         // if they have not already guessed that letter
-        if(!guesses.includes(guess) && !didUserWin(blankWord, monster) && lives !== 0) {
+        if(!guesses.includes(guess) && !didUserWin(monster) && lives !== 0) {
             // If guess is not in the guesses array, push it to array
             guesses.push(guess);
             // if guess is in word
@@ -228,7 +228,7 @@ function newGame() {
                     newGame();
             }
             // Check if user won and show div
-            if (didUserWin(blankWord, monster)) {               
+            if (didUserWin(monster)) {               
                 showElement("win");
 
                 if (auto.checked == true)
@@ -236,23 +236,21 @@ function newGame() {
             }
         }
 
-        // Creating a variable to hold html of user's
-        // previous guesses
+        // Creating a variable to hold html of user's previous guesses
         var html =
         "<p>You have guessed: " + guesses + "</p>" + 
         "<p>Lives: " + lives;
         // Set the inner HTML contents of the #guesses div 
-        // to our html string.
         document.querySelector("#guesses").innerHTML = html;
         document.querySelector("#blankWord").innerHTML = blankWord;
-    };
+    }; // End checkLetter()
+    
     // variable for setGuess function
     newGame.setGuess = setGuess;
-// End newGame()
-}
+} // End newGame()
 
 // check if user has guessed all letters
-function didUserWin (blannks, monster) {
+function didUserWin (monster) {
     for (var i = 0; i < monster.length; i++) {
         if (blankWord.charAt(2*i) !== monster.charAt(i)) {
             return false;
@@ -277,11 +275,7 @@ function hideElement (id) {
     };
 };
 
-function showHint(){
-    showElement("hint");
-};
-
-function resetData(canvas, contezt) {
+function resetData() {
     // Reset variables
     guesses = [];
     blankWord = "";
