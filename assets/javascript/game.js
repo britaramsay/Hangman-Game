@@ -6,6 +6,8 @@ var monsters = [{name: "banshee", hint: "a female spirit whose wailing warns of 
                 {name: "dryad", hint: "a nymph inhabiting a forest or a tree, especially an oak tree."}, 
                 {name: "elf", hint: "a supernatural creature of folk tales, typically represented as a small, elusive figure in human form with pointed ears, magical powers, and a capricious nature."}, 
                 {name: "ghoul", hint: "an evil spirit or phantom, especially one supposed to rob graves and feed on dead bodies."}, 
+                {name: "giant", hint: "an imaginary or mythical being of human form but superhuman size."},
+                {name: "gnome", hint: "a legendary dwarfish creature supposed to guard the earth's treasures underground."},
                 {name: "imp", hint: "a small, mischievous devil or sprite."}, 
                 {name: "ogre", hint: "a man-eating giant."}, 
                 {name: "orc", hint: "a member of an imaginary race of humanlike creatures, characterized as ugly, warlike, and malevolent."}, 
