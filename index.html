@@ -17,6 +17,9 @@
         <div class="container">
             <div class="row">
                 <input id="newGame" type="button" class="btn btn-success" value="New Game" onclick="newGame();">
+                <div class="checkbox">
+                    <label id="auto"><input type="checkbox" value="" onclick="checkBox()"" id="box">Auto start new game</label>
+                </div>
 
                 <span id="instructions" style="display: none;"><blockquote>Type a letter to guess that it is in the word.</blockquote></span>
             </div>
@@ -43,9 +46,9 @@
 
                     <p id="hint" style="display: none">Hint</p>
 
-                    <p id="win" style="display: none">YOU WON!</p>
+                    <p id="win" style="display: none"><img src="assets/images/win.png"></p>
         
-                    <p id="game-over" style="display: none">GAME OVER</p>
+                    <p id="game-over" style="display: none"><img src="assets/images/lose.png"></p>
                 </div>
             </div>
         </div>

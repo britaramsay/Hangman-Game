@@ -17,13 +17,21 @@ var guesses = [];
 var lives = 7;
 var blankWord = "";
 
-
+// for mobile, jquery to make div buttons of all letters
+function checkBox() {
+    var auto = document.getElementById("box");
+    if (auto.checked == true)
+        newGame();
+}
    
 function newGame() {
     // Choose a random monster for user to guess
     var inx = Math.floor(Math.random()*monsters.length);
     var monster = monsters[inx].name;
     var monsterHint = monsters[inx].hint;
+
+    var auto = document.getElementById("box");
+
 
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
@@ -33,7 +41,6 @@ function newGame() {
     for(var i = 0; i < monster.length; i++) {
         blankWord += "_ ";
     }
-    
 
     showElement("showHint");
     showElement("gamePanel");
@@ -70,6 +77,8 @@ function newGame() {
     ctx.moveTo(130,50);
     ctx.lineTo(130,80);
     ctx.stroke();
+
+   
 
     // Logs user's letter guess, saves it in variable guess.
     document.onkeyup = function(event) {
@@ -160,10 +169,17 @@ function newGame() {
                 ctx.stroke();
 
                 showElement("game-over");
+
+                if (auto.checked == true)
+                    newGame();
             }
             // Check if user won and show div
-            if (didUserWin(blankWord, monster))                 
+            if (didUserWin(blankWord, monster)) {               
                 showElement("win");
+
+                if (auto.checked == true)
+                    newGame();
+            }
         }
 
         // Creating a variable to hold html of user's

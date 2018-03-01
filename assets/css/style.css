@@ -1,9 +1,24 @@
+* {
+    box-sizing: border-box;
+    display: block;
+}
+
 body {
-    margin: 0;
+    margin: 0px;
+    background: url("../images/vertical-waves.png");
 }
 
 .jumbotron {
     background: url("../images/abstract.jpg");
+}
+
+.col-6 {
+    background: url("../images/dark-triangles.png");
+
+}
+
+#auto {
+    margin-left: 20px;
 }
 
 .jumbotron h1 {
@@ -14,9 +29,9 @@ body {
 }
 
 .btn {
-    /* background-color: aquamarine; */
     float: left;
     font-size: 25px;
+    box-shadow: 2px 2px 2px #aaaaaa;
 }
 
 p {
@@ -38,7 +53,7 @@ p {
 #guesses {
     clear: both;
     margin-left: 20px;
-    /* margin-top: 70px; */
+    font-size: 18px;
 }
 
 #blankWord {
@@ -67,8 +82,6 @@ p {
     margin-left: 40px;
 }
 
-#myCanvas {
-    margin-top: 40px;
-    display: block;
-    border: 0px;
+canvas {
+    border: 0px !important;
 }
